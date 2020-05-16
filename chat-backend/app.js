@@ -34,8 +34,20 @@ app.use('/api', messageRoutes)
 
 // * IO STUFF
 
-io.on('connection', () => {
-    console.log('connected')
+io.on('connection', socket => {
+    // console.log('connected')
+
+    socket.on('msg', e => {
+        // console.log(`recieved message`);
+        console.log(e);
+        io.emit('send message', e)
+    });
+
+    // socket.on('')
+
+    socket.emit('test1', 'here is the results for test 1');
+
+
 });
 
 const PORT = process.env.PORT || 3000

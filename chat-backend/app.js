@@ -37,10 +37,16 @@ app.use('/api', messageRoutes)
 io.on('connection', socket => {
     // console.log('connected')
 
+    socket.on('room', e => {
+        // console.log(e);
+        socket.join(e);
+    })
+
     socket.on('msg', e => {
         // console.log(`recieved message`);
         console.log(e);
-        io.emit('send message', e)
+        io.to(e.roomName).emit('send message', e.message)
+        // io.emit('send message', e)
     });
 
     // socket.on('')

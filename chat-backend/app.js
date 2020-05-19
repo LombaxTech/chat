@@ -35,24 +35,14 @@ app.use('/api', messageRoutes)
 // * IO STUFF
 
 io.on('connection', socket => {
-    // console.log('connected')
 
-    socket.on('room', e => {
-        // console.log(e);
+    socket.on('join room', e => {
         socket.join(e);
     })
 
     socket.on('msg', e => {
-        // console.log(`recieved message`);
-        console.log(e);
-        io.to(e.roomName).emit('send message', e.message)
-        // io.emit('send message', e)
-    });
-
-    // socket.on('')
-
-    socket.emit('test1', 'here is the results for test 1');
-
+        io.to(e.roomName).emit('message', e.message)
+    })
 
 });
 

@@ -25,17 +25,20 @@ const PrivateMessage = ({ match }) => {
     ]);
     const [inputValue, setInputValue] = useState('');
 
-    // socket.emit('room', `${studentId}...${tutorId}`);
 
     socket.on('connect', () => {
-        socket.emit('room', roomName)
+        socket.emit('join room', roomName)
     })
 
-    socket.on('send message', payload => {
-        // console.log('recived message')
-        console.log(payload);
-        setMessages([...messages, { name: "Eren", message: payload }])
+    socket.on('message', message => {
+        setMessages([...messages, { name: "Eren", message }])
     })
+
+    // socket.on('send message', payload => {
+    //     // console.log('recived message')
+    //     console.log(payload);
+    //     setMessages([...messages, { name: "Eren", message: payload }])
+    // })
 
     useEffect(() => {
 

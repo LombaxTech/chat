@@ -28,9 +28,11 @@ app.get('/', (req, res) => {
 
 // Routes
 const messageRoutes = require('./routes/message');
+const authRoutes = require('./routes/auth');
 
 // Routes middleware
 app.use('/api', messageRoutes)
+app.use('/api', authRoutes)
 
 // * IO STUFF
 

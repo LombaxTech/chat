@@ -9,8 +9,12 @@ const messageSchema = new Schema({
     message: String
 }, { timestamps: true });
 
-const chatSchema = new Schema({
-    partner: {
+const inboxSchema = new Schema({
+    partnerName: {
+        type: String,
+        required: true
+    },
+    partnerId: {
         type: String,
         required: true
     },
@@ -31,7 +35,7 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
-    inbox: [chatSchema]
+    inbox: [inboxSchema]
 })
 
 const User = mongoose.model('User', userSchema);

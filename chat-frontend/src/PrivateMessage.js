@@ -34,11 +34,6 @@ const PrivateMessage = ({ match }) => {
         setMessages([...messages, { name: "Eren", message }])
     })
 
-    // socket.on('send message', payload => {
-    //     // console.log('recived message')
-    //     console.log(payload);
-    //     setMessages([...messages, { name: "Eren", message: payload }])
-    // })
 
     useEffect(() => {
 
